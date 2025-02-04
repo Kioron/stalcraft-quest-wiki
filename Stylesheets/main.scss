@@ -1,0 +1,410 @@
+$primary-background-color: #333544;
+$header-background-color: #2F2F38; 
+$questbox-background-color: #3A3A46;
+$font-color:rgb(211, 211, 211);
+
+body {
+    background-color: $primary-background-color;
+    margin:0%;
+    font-family: sans-serif;
+}
+
+header {
+    top: 0;
+    width: 100%;
+    background-color: $header-background-color;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h1 {
+            color: $font-color;
+            font-size: 24px;
+            }
+      }
+}
+
+.main {
+    background-color: $primary-background-color;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin-top: 4%;
+    flex-direction: column;
+    row-gap: 20px;
+    
+    .title-heading{
+        width: 85%;
+        display: flex;
+        color: $font-color;
+        font-size: 24px;
+        font-weight: bold;
+
+        .btn-back{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: none;
+            color: $font-color;
+            border-radius: 28px;
+            padding: 0.5rem;
+            text-decoration: none;
+            a{
+                color: $font-color;
+                text-decoration: none;
+            }
+            &:hover {
+                color: lighten($font-color, 10%);
+                text-decoration:none;
+              }
+        }
+        .title{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .faction-icon{
+            width: 5em;
+            height: 5em;
+            margin-right: 0.5em;
+        }
+    }
+
+    .search-section{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 2%;
+            
+            .filter-button{
+                background: none;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                margin-left: 2em;
+
+                img{
+                    width:64px;
+                    height:64px;
+                } 
+            }
+
+        .search-wrapper{
+            width: max-content;
+            display: flex;
+            align-items: center;
+            width: 50%;
+            height: 3.125rem;
+            background-color: $questbox-background-color;
+            border-radius: 28px;
+            margin-left:64px;
+    
+            .search-input{
+                font-size: 20px;
+                background-color: transparent;
+                color: $font-color;
+                width: 100%;
+                border-width: 0;
+                outline: none;
+                padding-left: 1rem;
+            }
+        }
+    }
+
+    .filter-section{
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 0.5s ease-out, opacity 0.6s ease-out;
+        &[data-visible="true"]{
+            display:flex;
+            opacity: 1;
+            max-height: 20em;
+            visibility: visible;
+            width: 75%;
+            min-height: 5em;
+            margin-bottom: 2rem;
+            background-color: $questbox-background-color;
+            box-shadow: 0 2px 5px rgba(40, 39, 39, 0.7);
+        }
+        
+        .filter-section-bandit{
+            display: flex;
+            float: left;
+            width: 50%;
+            .filter-section-bandit-checkbox{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                padding: 1%;
+                h1{
+                    color:$font-color;
+                }
+                input[type="checkbox"]{
+                    width: 1.5em;
+                    height: 1.5em;
+                    margin-left: 3%;
+                    appearance: none;
+                    border: 2px solid #ccc;
+                    border-radius: 4px;
+                    position: relative;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease-out;
+                    &:hover{
+                        background-color: #5a5a60;
+                    }
+                    &:checked {
+                        background-color: $header-background-color;
+                        border-color: $header-background-color;
+                
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            width: 0.5em;
+                            height: 0.5em;
+                            background-color: black;
+                            transform: translate(-50%, -50%) rotate(45deg);
+                            border: solid black;
+                            border-width: 0 2px 2px 0;
+                        }
+                        
+                    }
+                }
+            }
+        }
+        .filter-section-covenant{
+            display: flex;
+            float: right;
+            width: 50%;
+        .filter-section-covenant-checkbox{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 1%;
+            h1{
+                color:$font-color;
+            }
+            input[type="checkbox"]{
+                width: 1.5em;
+                height: 1.5em;
+                margin-left: 3%;
+                appearance: none;
+                border: 2px solid #ccc;
+                border-radius: 4px;
+                position: relative;
+                cursor: pointer;
+                transition: background-color 0.3s ease-out;
+                    &:hover{
+                        background-color: #5a5a60;
+                    }
+                &:checked {
+                    background-color: $header-background-color;
+                    border-color: $header-background-color;
+            
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        width: 0.5em;
+                        height: 0.5em;
+                        background-color: purple;
+                        transform: translate(-50%, -50%) rotate(45deg);
+                        border: solid purple;
+                        border-width: 0 2px 2px 0;
+                    }
+                }
+            }
+        }
+        }
+    }
+
+    .quest-list{
+        display:flex;
+        flex-direction: column;
+        align-items:center;
+        width:100%;
+        min-height: 100vh;
+    }
+    
+    .quest-boxes-list,
+    .quest-details{
+        display: flex;
+        flex-direction: column;
+        width: 85%;
+        min-height: 9.375em;
+        margin-bottom: 2rem;
+        background-color: $questbox-background-color;
+        box-shadow: 0 2px 5px rgba(40, 39, 39, 0.7);
+
+        .quest-description{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            padding: 2%;
+            color: $font-color;
+            line-height: 1.5;
+            .quest-text{
+                display: flex;
+                width: 100%;
+                padding-bottom: 2%;
+            }
+            .quest-image{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        .quest-box-title,
+        .quest-box-description,
+        .quest-box-link{
+            display:flex;
+            color: $font-color;
+            flex-grow: 1;
+            margin: 0%;
+        }
+
+        .quest-box-title{
+            padding-top:2%;
+            padding-left:2%;
+            padding-bottom:2%;
+            font-size: 22px;
+            font-weight: bold;
+
+            .quest-box-icon{
+                width: 1.5em;
+                height: 1.5em;
+                margin-right: 0.5em;
+            }
+        }
+
+        .quest-box-description{
+            padding-left:2%;
+            padding-right:2%;
+            font-size: 16px;
+        }
+
+        .quest-box-link{
+            justify-content: right;
+            padding-top:2%;
+            padding-bottom:2%;
+            padding-right:2%;
+            a {
+                color: $font-color;
+                text-decoration: none;
+                &:hover {
+                  color: lighten($font-color, 10%);
+                  text-decoration:none;
+                }
+              }
+        }
+    }
+}
+.quest-boxes-list.hide {
+    display: none;
+  
+}
+
+footer {
+    display: flex;
+    bottom: 0;
+    margin-top: 5%;
+    width: 100%;
+    background-color: $header-background-color;
+
+    .Footer-Details-Left{
+        width: 50%;
+        float:left;
+        margin-bottom: 20px;
+
+        .Footer-Details-Left-List{
+            color: $font-color;
+            display: flex;
+            width:100%;
+            justify-content: center;
+            align-items: center;
+            padding: 1%;
+
+            a {
+                color: $font-color;
+                text-decoration: none;
+                &:hover {
+                  color: lighten($font-color, 10%);
+                }
+              }
+        }
+    }
+    .Footer-Details-Right{
+        width: 50%;
+        float:right;
+        margin-bottom: 20px;
+        
+        .Footer-Details-Right-List{
+            color: $font-color;
+            display: flex;
+            width:100%;
+            justify-content: center;
+            align-items: center;
+            padding: 1%;
+            
+            a {
+                color: $font-color;
+                text-decoration: none;
+                &:hover {
+                  color: lighten($font-color, 10%);
+                }
+              }
+        }
+    }
+}
+
+@media screen and (max-width:768px) {
+    .main{
+    .search-section{
+    .filter-button{
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        margin-left: 2em;
+
+        img {
+            width: 42px;
+            height: 42px;
+        }
+    }
+    }
+}
+    
+    footer {
+        display: flex;
+        bottom: 0;
+        margin-top: 5%;
+        width: 100%;
+        flex-direction: column;
+        background-color: $header-background-color;
+    
+        .Footer-Details-Left{
+            width: 100%;
+            margin-bottom: 20px;
+    
+        }
+        .Footer-Details-Right{
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+}
+
