@@ -8,7 +8,7 @@ const filterCovenant = document.querySelector("[data-filter-covenant]");
 
 let questsearch = [];
 
-fetch('http://localhost:3000/queststable')
+fetch('https://webapi-chi-ochre.vercel.app/queststable')
   .then((response) => response.json())
   .then((data) => {
    questsearch = data.map(quest => {
