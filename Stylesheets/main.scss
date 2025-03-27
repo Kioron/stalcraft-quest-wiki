@@ -1,11 +1,16 @@
 $primary-background-color: #333544;
-$header-background-color: #2F2F38; 
+$header-background-color: #2F2F38;
 $questbox-background-color: #3A3A46;
-$font-color:rgb(211, 211, 211);
+$font-color: rgb(211, 211, 211);
 
+html,
 body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     background-color: $primary-background-color;
-    margin:0%;
+    overflow-x: hidden;
+    margin: 0;
     font-family: sans-serif;
 }
 
@@ -14,34 +19,37 @@ header {
     width: 100%;
     background-color: $header-background-color;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
     div {
         display: flex;
         justify-content: center;
         align-items: center;
+
         h1 {
             color: $font-color;
             font-size: 24px;
-            }
-      }
+        }
+    }
 }
 
 .main {
     background-color: $primary-background-color;
+    flex: 1;
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     margin-top: 4%;
     flex-direction: column;
     row-gap: 20px;
-    
-    .title-heading{
+
+    .title-heading {
         width: 85%;
         display: flex;
         color: $font-color;
         font-size: 24px;
         font-weight: bold;
 
-        .btn-back{
+        .btn-back {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -50,49 +58,53 @@ header {
             border-radius: 28px;
             padding: 0.5rem;
             text-decoration: none;
-            a{
+
+            a {
                 color: $font-color;
                 text-decoration: none;
             }
+
             &:hover {
                 color: lighten($font-color, 10%);
-                text-decoration:none;
-              }
+                text-decoration: none;
+            }
         }
-        .title{
+
+        .title {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
         }
-        .faction-icon{
+
+        .faction-icon {
             width: 5em;
             height: 5em;
             margin-right: 0.5em;
         }
     }
 
-    .search-section{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            margin-bottom: 2%;
-            
-            .filter-button{
-                background: none;
-                border: none;
-                padding: 0;
-                cursor: pointer;
-                margin-left: 2em;
+    .search-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 2%;
 
-                img{
-                    width:64px;
-                    height:64px;
-                } 
+        .filter-button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            margin-left: 2em;
+
+            img {
+                width: 64px;
+                height: 64px;
             }
+        }
 
-        .search-wrapper{
+        .search-wrapper {
             width: max-content;
             display: flex;
             align-items: center;
@@ -100,9 +112,9 @@ header {
             height: 3.125rem;
             background-color: $questbox-background-color;
             border-radius: 28px;
-            margin-left:64px;
-    
-            .search-input{
+            margin-left: 64px;
+
+            .search-input {
                 font-size: 20px;
                 background-color: transparent;
                 color: $font-color;
@@ -114,14 +126,15 @@ header {
         }
     }
 
-    .filter-section{
+    .filter-section {
         overflow: hidden;
         max-height: 0;
         opacity: 0;
         visibility: hidden;
         transition: max-height 0.5s ease-out, opacity 0.6s ease-out;
-        &[data-visible="true"]{
-            display:flex;
+
+        &[data-visible="true"] {
+            display: flex;
             opacity: 1;
             max-height: 20em;
             visibility: visible;
@@ -131,21 +144,24 @@ header {
             background-color: $questbox-background-color;
             box-shadow: 0 2px 5px rgba(40, 39, 39, 0.7);
         }
-        
-        .filter-section-bandit{
+
+        .filter-section-bandit {
             display: flex;
             float: left;
             width: 50%;
-            .filter-section-bandit-checkbox{
+
+            .filter-section-bandit-checkbox {
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 width: 100%;
                 padding: 1%;
-                h1{
-                    color:$font-color;
+
+                h1 {
+                    color: $font-color;
                 }
-                input[type="checkbox"]{
+
+                input[type="checkbox"] {
                     width: 1.5em;
                     height: 1.5em;
                     margin-left: 3%;
@@ -155,13 +171,15 @@ header {
                     position: relative;
                     cursor: pointer;
                     transition: background-color 0.3s ease-out;
-                    &:hover{
+
+                    &:hover {
                         background-color: #5a5a60;
                     }
+
                     &:checked {
                         background-color: $header-background-color;
                         border-color: $header-background-color;
-                
+
                         &::after {
                             content: '';
                             position: absolute;
@@ -174,69 +192,74 @@ header {
                             border: solid black;
                             border-width: 0 2px 2px 0;
                         }
-                        
+
                     }
                 }
             }
         }
-        .filter-section-covenant{
+
+        .filter-section-covenant {
             display: flex;
             float: right;
             width: 50%;
-        .filter-section-covenant-checkbox{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 1%;
-            h1{
-                color:$font-color;
-            }
-            input[type="checkbox"]{
-                width: 1.5em;
-                height: 1.5em;
-                margin-left: 3%;
-                appearance: none;
-                border: 2px solid #ccc;
-                border-radius: 4px;
-                position: relative;
-                cursor: pointer;
-                transition: background-color 0.3s ease-out;
-                    &:hover{
+
+            .filter-section-covenant-checkbox {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                padding: 1%;
+
+                h1 {
+                    color: $font-color;
+                }
+
+                input[type="checkbox"] {
+                    width: 1.5em;
+                    height: 1.5em;
+                    margin-left: 3%;
+                    appearance: none;
+                    border: 2px solid #ccc;
+                    border-radius: 4px;
+                    position: relative;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease-out;
+
+                    &:hover {
                         background-color: #5a5a60;
                     }
-                &:checked {
-                    background-color: $header-background-color;
-                    border-color: $header-background-color;
-            
-                    &::after {
-                        content: '';
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        width: 0.5em;
-                        height: 0.5em;
-                        background-color: purple;
-                        transform: translate(-50%, -50%) rotate(45deg);
-                        border: solid purple;
-                        border-width: 0 2px 2px 0;
+
+                    &:checked {
+                        background-color: $header-background-color;
+                        border-color: $header-background-color;
+
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            width: 0.5em;
+                            height: 0.5em;
+                            background-color: purple;
+                            transform: translate(-50%, -50%) rotate(45deg);
+                            border: solid purple;
+                            border-width: 0 2px 2px 0;
+                        }
                     }
                 }
             }
         }
-        }
     }
 
-    .quest-list{
-        display:flex;
+    .quest-list {
+        display: flex;
         flex-direction: column;
-        align-items:center;
-        width:100%;
-        min-height: 100vh;
+        align-items: center;
+        width: 100%;
     }
-    
+
     .quest-boxes-list,
-    .quest-details{
+    .quest-details {
         display: flex;
         flex-direction: column;
         width: 85%;
@@ -245,7 +268,7 @@ header {
         background-color: $questbox-background-color;
         box-shadow: 0 2px 5px rgba(40, 39, 39, 0.7);
 
-        .quest-description{
+        .quest-description {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -254,12 +277,14 @@ header {
             padding: 2%;
             color: $font-color;
             line-height: 1.5;
-            .quest-text{
+
+            .quest-text {
                 display: flex;
                 width: 100%;
                 padding-bottom: 2%;
             }
-            .quest-image{
+
+            .quest-image {
                 width: 100%;
                 display: flex;
                 justify-content: center;
@@ -269,52 +294,80 @@ header {
 
         .quest-box-title,
         .quest-box-description,
-        .quest-box-link{
-            display:flex;
+        .quest-box-link {
+            display: flex;
             color: $font-color;
             flex-grow: 1;
             margin: 0%;
         }
 
-        .quest-box-title{
-            padding-top:2%;
-            padding-left:2%;
-            padding-bottom:2%;
+        .quest-box-title {
+            padding-top: 2%;
+            padding-left: 2%;
+            padding-bottom: 2%;
             font-size: 22px;
             font-weight: bold;
 
-            .quest-box-icon{
+            .quest-box-icon {
                 width: 1.5em;
                 height: 1.5em;
                 margin-right: 0.5em;
             }
         }
 
-        .quest-box-description{
-            padding-left:2%;
-            padding-right:2%;
+        .quest-box-description {
+            padding-left: 2%;
+            padding-right: 2%;
             font-size: 16px;
         }
 
-        .quest-box-link{
+        .quest-box-link {
             justify-content: right;
-            padding-top:2%;
-            padding-bottom:2%;
-            padding-right:2%;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            padding-right: 2%;
+
             a {
                 color: $font-color;
                 text-decoration: none;
+
                 &:hover {
-                  color: lighten($font-color, 10%);
-                  text-decoration:none;
+                    color: lighten($font-color, 10%);
+                    text-decoration: none;
                 }
-              }
+            }
         }
     }
+
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .pagination-button {
+        background-color: #333544;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 1rem;
+        margin: 0 0.25rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .pagination-button.active {
+        background-color: #2F2F38;
+        font-weight: bold;
+    }
+
+    .pagination-button:hover {
+        background-color: #44475a;
+    }
 }
+
 .quest-boxes-list.hide {
     display: none;
-  
+
 }
 
 footer {
@@ -324,15 +377,15 @@ footer {
     width: 100%;
     background-color: $header-background-color;
 
-    .Footer-Details-Left{
+    .Footer-Details-Left {
         width: 50%;
-        float:left;
+        float: left;
         margin-bottom: 20px;
 
-        .Footer-Details-Left-List{
+        .Footer-Details-Left-List {
             color: $font-color;
             display: flex;
-            width:100%;
+            width: 100%;
             justify-content: center;
             align-items: center;
             padding: 1%;
@@ -340,54 +393,57 @@ footer {
             a {
                 color: $font-color;
                 text-decoration: none;
+
                 &:hover {
-                  color: lighten($font-color, 10%);
+                    color: lighten($font-color, 10%);
                 }
-              }
+            }
         }
     }
-    .Footer-Details-Right{
+
+    .Footer-Details-Right {
         width: 50%;
-        float:right;
+        float: right;
         margin-bottom: 20px;
-        
-        .Footer-Details-Right-List{
+
+        .Footer-Details-Right-List {
             color: $font-color;
             display: flex;
-            width:100%;
+            width: 100%;
             justify-content: center;
             align-items: center;
             padding: 1%;
-            
+
             a {
                 color: $font-color;
                 text-decoration: none;
+
                 &:hover {
-                  color: lighten($font-color, 10%);
+                    color: lighten($font-color, 10%);
                 }
-              }
+            }
         }
     }
 }
 
 @media screen and (max-width:768px) {
-    .main{
-    .search-section{
-    .filter-button{
-        background: none;
-        border: none;
-        padding: 0;
-        cursor: pointer;
-        margin-left: 2em;
+    .main {
+        .search-section {
+            .filter-button {
+                background: none;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                margin-left: 2em;
 
-        img {
-            width: 42px;
-            height: 42px;
+                img {
+                    width: 42px;
+                    height: 42px;
+                }
+            }
         }
     }
-    }
-}
-    
+
     footer {
         display: flex;
         bottom: 0;
@@ -395,16 +451,16 @@ footer {
         width: 100%;
         flex-direction: column;
         background-color: $header-background-color;
-    
-        .Footer-Details-Left{
+
+        .Footer-Details-Left {
             width: 100%;
             margin-bottom: 20px;
-    
+
         }
-        .Footer-Details-Right{
+
+        .Footer-Details-Right {
             width: 100%;
             margin-bottom: 20px;
         }
     }
 }
-

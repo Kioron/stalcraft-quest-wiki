@@ -1,6 +1,11 @@
+html,
 body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   background-color: #333544;
-  margin: 0%;
+  overflow-x: hidden;
+  margin: 0;
   font-family: sans-serif;
 }
 
@@ -22,6 +27,7 @@ header div h1 {
 
 .main {
   background-color: #333544;
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -220,7 +226,6 @@ header div h1 {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-height: 100vh;
 }
 .main .quest-boxes-list,
 .main .quest-details {
@@ -303,6 +308,27 @@ header div h1 {
 .main .quest-details .quest-box-link a:hover {
   color: #ededed;
   text-decoration: none;
+}
+.main .pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.main .pagination-button {
+  background-color: #333544;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.main .pagination-button.active {
+  background-color: #2F2F38;
+  font-weight: bold;
+}
+.main .pagination-button:hover {
+  background-color: #44475a;
 }
 
 .quest-boxes-list.hide {

@@ -23,11 +23,40 @@ const connection = mysql.createConnection({
   });
 
   app.get('/queststable', (req, res) => {
-    connection.query('SELECT * FROM queststable', (err, results) => {
+    const { page = 1, limit = 5, search = "", bandit, covenant } = req.query;
+    const offset = (page - 1) * limit;
+  
+    let query = 'SELECT * FROM queststable WHERE 1=1';
+    const params = [];
+  
+    if (search) {
+      query += ' AND QuestName LIKE ?';
+      params.push(`%${search}%`);
+    }
+  
+    if (bandit === "true") {
+      query += ' AND Faction = "Bandit"';
+    }
+  
+    if (covenant === "true") {
+      query += ' AND Faction = "Covenant"';
+    }
+  
+    query += ' LIMIT ? OFFSET ?';
+    params.push(parseInt(limit), parseInt(offset));
+  
+    connection.query(query, params, (err, results) => {
       if (err) {
         res.status(500).send(err);
       } else {
-        res.json(results);
+        connection.query('SELECT COUNT(*) AS total FROM queststable', (err, countResults) => {
+          if (err) {
+            res.status(500).send(err);
+          } else {
+            const total = countResults[0].total;
+            res.json({ quests: results, total });
+          }
+        });
       }
     });
   });
