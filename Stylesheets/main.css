@@ -24,6 +24,11 @@ header div h1 {
   color: rgb(211, 211, 211);
   font-size: 24px;
 }
+@media screen and (max-width: 600px) {
+  header div h1 {
+    font-size: 16px;
+  }
+}
 
 .main {
   background-color: #333544;
@@ -67,9 +72,21 @@ header div h1 {
   width: 100%;
 }
 .main .title-heading .faction-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 5em;
   height: 5em;
   margin-right: 0.5em;
+}
+@media screen and (max-width: 600px) {
+  .main .title-heading {
+    font-size: 16px;
+  }
+  .main .title-heading .btn-back img {
+    width: 50px;
+    height: 50px;
+  }
 }
 .main .search-section {
   display: flex;
@@ -108,6 +125,11 @@ header div h1 {
   border-width: 0;
   outline: none;
   padding-left: 1rem;
+}
+@media screen and (max-width: 600px) {
+  .main .search-section .search-wrapper .search-input {
+    font-size: 16px;
+  }
 }
 .main .filter-section {
   overflow: hidden;
@@ -227,6 +249,12 @@ header div h1 {
   align-items: center;
   width: 100%;
 }
+.main .quest-list .no-results-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 1rem;
+}
 .main .quest-boxes-list,
 .main .quest-details {
   display: flex;
@@ -286,11 +314,35 @@ header div h1 {
   height: 1.5em;
   margin-right: 0.5em;
 }
+@media screen and (max-width: 600px) {
+  .main .quest-boxes-list .quest-box-title,
+  .main .quest-details .quest-box-title {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .main .quest-boxes-list .quest-box-title,
+  .main .quest-details .quest-box-title {
+    font-size: 15px;
+  }
+}
 .main .quest-boxes-list .quest-box-description,
 .main .quest-details .quest-box-description {
   padding-left: 2%;
   padding-right: 2%;
   font-size: 16px;
+}
+@media screen and (max-width: 600px) {
+  .main .quest-boxes-list .quest-box-description,
+  .main .quest-details .quest-box-description {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .main .quest-boxes-list .quest-box-description,
+  .main .quest-details .quest-box-description {
+    font-size: 12px;
+  }
 }
 .main .quest-boxes-list .quest-box-link,
 .main .quest-details .quest-box-link {
@@ -308,6 +360,32 @@ header div h1 {
 .main .quest-details .quest-box-link a:hover {
   color: #ededed;
   text-decoration: none;
+}
+@media screen and (max-width: 600px) {
+  .main .quest-boxes-list .quest-box-link,
+  .main .quest-details .quest-box-link {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .main .quest-boxes-list .quest-box-link,
+  .main .quest-details .quest-box-link {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .main .quest-boxes-list,
+  .main .quest-details {
+    width: 90%;
+    min-height: 7.5em;
+  }
+}
+@media screen and (max-width: 400px) {
+  .main .quest-boxes-list,
+  .main .quest-details {
+    width: 95%;
+    min-height: 5em;
+  }
 }
 .main .pagination-container {
   display: flex;

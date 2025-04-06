@@ -56,8 +56,19 @@ function fetchQuests(page = 1) {
     .catch((error) => console.error('Error fetching quests:', error));
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  fetchQuests(currentPage);
+});
+
 function renderQuests() {
   dataListContainer.innerHTML = "";
+  if (questsearch.length === 0) {
+    const noResultsMessage = document.createElement("p");
+    noResultsMessage.textContent = "No quests found.";
+    noResultsMessage.classList.add("no-results-message");
+    dataListContainer.append(noResultsMessage);
+    return;
+  }
   questsearch.forEach(quest => {
     dataListContainer.append(quest.element);
   });
@@ -65,9 +76,36 @@ function renderQuests() {
 
 function renderPagination(total) {
   paginationContainer.innerHTML = "";
-  const totalPages = Math.ceil(total / itemsPerPage);
 
-  for (let i = 1; i <= totalPages; i++) {
+  if (total === 0) {
+    paginationContainer.style.display = "none";
+    return;
+  }
+
+  paginationContainer.style.display = "block";
+  
+  const totalPages = Math.ceil(total / itemsPerPage);
+  const maxVisiblePages = 5;
+
+  let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+  let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+  if (endPage - startPage < maxVisiblePages - 1) {
+    startPage = Math.max(1, endPage - maxVisiblePages + 1);
+  }
+
+  if (currentPage > 1) {
+    const prevButton = document.createElement("button");
+    prevButton.textContent = "<";
+    prevButton.classList.add("pagination-button");
+    prevButton.addEventListener("click", () => {
+      currentPage--;
+      fetchQuests(currentPage);
+    });
+    paginationContainer.append(prevButton);
+  }
+
+  for (let i = startPage; i <= endPage; i++) {
     const button = document.createElement("button");
     button.textContent = i;
     button.classList.add("pagination-button");
@@ -79,6 +117,17 @@ function renderPagination(total) {
       fetchQuests(currentPage);
     });
     paginationContainer.append(button);
+  }
+
+  if (currentPage < totalPages) {
+    const nextButton = document.createElement("button");
+    nextButton.textContent = ">";
+    nextButton.classList.add("pagination-button");
+    nextButton.addEventListener("click", () => {
+      currentPage++;
+      fetchQuests(currentPage);
+    });
+    paginationContainer.append(nextButton);
   }
 }
 
@@ -98,17 +147,20 @@ const updateQuestVisibility = () => {
 };
 
 filterBandit.addEventListener('click', () => {
+  currentPage = 1;
   const visibilityBandit = filterBandit.getAttribute('faction-visible') === "true";
   filterBandit.setAttribute('faction-visible', !visibilityBandit);
   fetchQuests(currentPage);
 });
 
 filterCovenant.addEventListener('click', () => {
+  currentPage = 1;
   const visibilityCovenant = filterCovenant.getAttribute('faction-visible') === "true";
   filterCovenant.setAttribute('faction-visible', !visibilityCovenant);
   fetchQuests(currentPage);
 });
 
 searchInput.addEventListener("input", e => {
+  currentPage = 1;
   updateQuestVisibility();
 });
