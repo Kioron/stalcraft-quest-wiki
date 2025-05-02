@@ -289,6 +289,25 @@ header div h1 {
   justify-content: center;
   align-items: center;
 }
+.main .quest-boxes-list .quest-description .quest-image img,
+.main .quest-details .quest-description .quest-image img {
+  width: 50%;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+@media screen and (max-width: 600px) {
+  .main .quest-boxes-list .quest-description .quest-image img,
+  .main .quest-details .quest-description .quest-image img {
+    width: 85%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .main .quest-boxes-list .quest-description .quest-image img,
+  .main .quest-details .quest-description .quest-image img {
+    width: 100%;
+  }
+}
 .main .quest-boxes-list .quest-box-title,
 .main .quest-boxes-list .quest-box-description,
 .main .quest-boxes-list .quest-box-link,
